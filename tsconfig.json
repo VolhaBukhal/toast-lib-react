@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+      "jsx": "react-jsx",
       "target": "es5",
       "outDir": "lib",
       "lib": [
@@ -20,7 +21,6 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true,
-      "jsx": "react",
       "baseUrl": "./src",
       "paths": {
         "@/*": ["*"],
@@ -35,5 +35,5 @@
     "exclude": [
         "node_modules",
         "lib"
-    ]
+    ],
   }
