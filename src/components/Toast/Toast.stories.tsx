@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Toast } from '.'
 
 import { ToastMode, AnimationMode } from './types'
+import { ToastPortalPosition } from '@/components/ToastPortal/types'
 
 export default {
   title: 'Toast',
@@ -47,6 +48,7 @@ Warning.args = {
   mode: ToastMode.WARNING,
   message: 'Warning Toast',
   animationType: AnimationMode.MOVE,
+  position: ToastPortalPosition.TOP_LEFT,
 }
 
 export const Error = Template.bind({})

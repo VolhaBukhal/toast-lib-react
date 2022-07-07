@@ -1,6 +1,6 @@
 // import Button from './components/Button/Button'
 
 import { ToastPortal } from '@/components/ToastPortal'
-import { Toast } from '@/components/Toast'
+import { useToastRef } from '@/hooks/useToastRef'
 
-export { ToastPortal, Toast }
+export { ToastPortal, useToastRef }

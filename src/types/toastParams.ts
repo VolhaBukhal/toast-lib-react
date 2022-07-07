@@ -4,6 +4,7 @@ export type IToastParams = {
   title: string
   animationType: string
   backgroundColor?: string
+  position: string
   // reverse: boolean
   // onClose: () => void
 }

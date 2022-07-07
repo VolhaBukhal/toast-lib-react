@@ -4,7 +4,9 @@ export type ToastProps = {
   message: string
   animationType: string
   backgroundColor?: string
+  position: string
   onClose: () => void
+  onDragDelete: () => void
 }
 
 export type StyledToastProps = {
@@ -12,6 +14,7 @@ export type StyledToastProps = {
   backgroundColor?: string
   reverse: boolean
   animationType: string
+  position: string
 }
 
 export enum ToastMode {

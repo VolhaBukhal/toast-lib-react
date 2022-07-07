@@ -1,8 +1,9 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 import { theme } from '@/theme'
 
 import { StyledToastProps, ToastMode, AnimationMode } from './types'
+import { ToastPortalPosition } from '@/components/ToastPortal/types'
 
 const fadeIn = keyframes`
  0% { opacity: 0 }
@@ -17,6 +18,48 @@ const fromRight = keyframes`
  0% { right: -110%; }
  100% { right: 0%; }
 `
+const fromLeft = keyframes`
+ 0% { left: -110%; }
+ 100% { left: 0%; }
+`
+
+const setReverse = (position: string) => {
+  switch (position) {
+    case ToastPortalPosition.BOTTOM_LEFT: {
+      return css`
+        animation-direction: reverse;
+      `
+    }
+    case ToastPortalPosition.TOP_LEFT: {
+      return css`
+        animation-direction: reverse;
+      `
+    }
+
+    default:
+      return css`
+        animation-direction: reverse;
+      `
+  }
+}
+
+const setAnimationName = (animationType: string, position: string) => {
+  if (animationType === AnimationMode.FADE) {
+    return fadeIn
+  }
+
+  if (animationType === AnimationMode.SCALE) {
+    return scaleUp
+  }
+
+  if (animationType === AnimationMode.MOVE) {
+    if (position === ToastPortalPosition.TOP_LEFT || position === ToastPortalPosition.BOTTOM_LEFT) {
+      return fromLeft
+    } else {
+      return fromRight
+    }
+  }
+}
 
 export const StyledToast = styled.div<StyledToastProps>`
   width: ${theme.widths[1]}px;
@@ -54,20 +97,9 @@ export const StyledToast = styled.div<StyledToastProps>`
   box-sizing: border-box;
   box-shadow: ${theme.boxShadow};
 
-  animation-name: ${({ animationType }) => {
-    switch (animationType) {
-      case AnimationMode.FADE: {
-        return fadeIn
-      }
-      case AnimationMode.SCALE: {
-        return scaleUp
-      }
-      default:
-        return fromRight
-    }
-  }};
+  animation-name: ${({ animationType, position }) => setAnimationName(animationType, position)};
   animation-duration: ${theme.duration.ms300}s;
-  animation-direction: ${({ reverse }) => (reverse ? 'reverse' : 'normal')};
+  animation-direction: ${({ reverse }) => (reverse ? 'reverse' : '')};
   animation-fill-mode: forwards;
 
   &:hover {

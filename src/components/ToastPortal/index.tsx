@@ -10,15 +10,18 @@ import { Toast } from '@/components/Toast'
 
 import { ToastContainer } from './styles'
 
-// type RefType = Record<string, unknown>
 type RefType = {
   addMessage: (toast: IToastParams) => void
 }
 
-// export const ToastPortal = forwardRef<RefType, ToastPortalProps>(
 export const ToastPortal = forwardRef<RefType, ToastPortalProps>(
   (
-    { autoClose = false, autoCloseTime = 4000, position = ToastPortalPosition.TOP_RIGHT, margin },
+    {
+      autoClose = false,
+      autoCloseTime = 4000,
+      position = ToastPortalPosition.TOP_RIGHT,
+      margin = ToastPortalMargin.NONE,
+    },
     ref
   ) => {
     const { toasts, removeToast, getAllToasts, generateToast, addToast } = toastService
@@ -55,24 +58,33 @@ export const ToastPortal = forwardRef<RefType, ToastPortalProps>(
 
     const handleClose = (id: string) => () => {
       removeToast(id)
+
       setToastsLength(getAllToasts().length)
     }
 
     return loaded
       ? ReactDOM.createPortal(
-          <ToastContainer position={position} autoClose={autoClose} autoCloseTime={autoCloseTime}>
-            <p>ToastPortal</p>
-            {toasts.map(({ title, id, mode, message, animationType, backgroundColor }) => (
-              <Toast
-                title={title}
-                key={id}
-                mode={mode}
-                message={message}
-                backgroundColor={backgroundColor}
-                animationType={animationType}
-                onClose={handleClose(id)}
-              ></Toast>
-            ))}
+          <ToastContainer
+            position={position}
+            autoClose={autoClose}
+            autoCloseTime={autoCloseTime}
+            margin={margin}
+          >
+            {toasts.map(
+              ({ title, id, mode, message, animationType, backgroundColor, position }) => (
+                <Toast
+                  title={title}
+                  key={id}
+                  mode={mode}
+                  message={message}
+                  backgroundColor={backgroundColor}
+                  animationType={animationType}
+                  onClose={handleClose(id)}
+                  onDragDelete={handleClose(id)}
+                  position={position}
+                ></Toast>
+              )
+            )}
           </ToastContainer>,
           document.getElementById(portalId)!
         )

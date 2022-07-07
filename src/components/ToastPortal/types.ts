@@ -6,10 +6,10 @@ export type ToastPortalProps = {
 }
 
 export enum ToastPortalMargin {
-  NONE = '0px',
-  SMALL = '10px',
-  MEDIUM = '15px',
-  LARGE = '20px',
+  NONE = 'none',
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  LARGE = 'large',
 }
 
 export enum ToastPortalPosition {

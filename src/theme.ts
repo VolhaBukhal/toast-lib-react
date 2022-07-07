@@ -16,5 +16,5 @@ export const theme = {
   boxShadow: '0px 0px 2px rgb(69, 69, 69)',
   boxShadowHover: '0px 0px 3px gray',
   widths: [75, 350],
-  positions: [0, 10],
+  positions: [0, 10, 20],
 }

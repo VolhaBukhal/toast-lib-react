@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import { ToastProps, AnimationMode } from './types'
+import { ToastPortalPosition } from '@/components/ToastPortal/types'
 import { StyledToast, StyledTitle, StyledCloseToast } from './styles'
 
 export const Toast = ({
@@ -9,10 +10,12 @@ export const Toast = ({
   message,
   backgroundColor,
   animationType = AnimationMode.SCALE,
+  position = ToastPortalPosition.TOP_RIGHT,
   onClose,
+  onDragDelete,
 }: ToastProps) => {
   const [reverse, setReverse] = useState(false)
-  console.log('reverse: ', reverse.toString())
+  console.log(reverse)
 
   useEffect(() => {
     setReverse(false)
@@ -22,12 +25,17 @@ export const Toast = ({
     setReverse(true)
     onClose()
   }
+
   return (
     <StyledToast
       mode={mode}
       backgroundColor={backgroundColor}
       reverse={reverse}
       animationType={animationType}
+      position={position}
+      draggable
+      onClick={onToastClose}
+      onDragEnd={onDragDelete}
     >
       <StyledTitle>{title}</StyledTitle>
       <p>{message}</p>

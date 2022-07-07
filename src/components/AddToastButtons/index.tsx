@@ -2,18 +2,13 @@ import React from 'react'
 
 import { ToastMode, AnimationMode } from '@/components/Toast/types'
 import { useToastRef } from '@/hooks/useToastRef'
-import { ToastPortalProps, ToastPortalPosition } from '@/components/ToastPortal/types'
+import { ToastPortalProps } from '@/components/ToastPortal/types'
 
 import { ToastPortal } from '@/components/ToastPortal'
 
 import { ButtonGroup, Button } from './styles'
 
-// export const AddToastButtons = (props: ToastPortalProps) => {
-export const AddToastButtons = ({
-  autoClose = false,
-  autoCloseTime = 4000,
-  position = ToastPortalPosition.TOP_RIGHT,
-}: ToastPortalProps) => {
+export const AddToastButtons = (props: ToastPortalProps) => {
   const { toastRef, addToast } = useToastRef()
 
   const addSuccess = () =>
@@ -22,6 +17,7 @@ export const AddToastButtons = ({
       mode: ToastMode.SUCCESS,
       message: 'Success message',
       animationType: AnimationMode.FADE,
+      position: props.position,
     })
 
   const addInfo = () =>
@@ -30,6 +26,7 @@ export const AddToastButtons = ({
       mode: ToastMode.INFO,
       message: 'Info message',
       animationType: AnimationMode.MOVE,
+      position: props.position,
     })
 
   const addWarning = () =>
@@ -38,6 +35,7 @@ export const AddToastButtons = ({
       mode: ToastMode.WARNING,
       message: 'Warning message',
       animationType: AnimationMode.SCALE,
+      position: props.position,
     })
 
   const addError = () =>
@@ -46,6 +44,7 @@ export const AddToastButtons = ({
       mode: ToastMode.ERROR,
       message: 'Error message',
       animationType: AnimationMode.MOVE,
+      position: props.position,
     })
 
   return (
@@ -54,13 +53,14 @@ export const AddToastButtons = ({
       <Button onClick={addInfo}>Info Toast</Button>
       <Button onClick={addWarning}>Warning Toast</Button>
       <Button onClick={addError}>Error Toast</Button>
-      {/* <ToastPortal ref={toastRef} {...props} /> */}
-      <ToastPortal
+      <ToastPortal ref={toastRef} {...props} />
+      {/* <ToastPortal
         ref={toastRef}
         autoClose={autoClose}
         autoCloseTime={autoCloseTime}
         position={position}
-      />
+        margin={margin}
+      /> */}
     </ButtonGroup>
   )
 }
