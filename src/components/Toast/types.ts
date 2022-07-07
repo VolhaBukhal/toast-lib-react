@@ -1,10 +1,9 @@
 export type ToastProps = {
   title: string
-  reverse: boolean
   mode: string
   message: string
   animationType: string
-  backgroundColor: string
+  backgroundColor?: string
   onClose: () => void
 }
 

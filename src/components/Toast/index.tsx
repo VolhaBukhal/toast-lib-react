@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { ToastProps, AnimationMode } from './types'
 import { StyledToast, StyledTitle, StyledCloseToast } from './styles'
@@ -12,6 +12,12 @@ export const Toast = ({
   onClose,
 }: ToastProps) => {
   const [reverse, setReverse] = useState(false)
+  console.log('reverse: ', reverse.toString())
+
+  useEffect(() => {
+    setReverse(false)
+  }, [setReverse])
+
   const onToastClose = () => {
     setReverse(true)
     onClose()

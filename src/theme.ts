@@ -5,6 +5,7 @@ export const theme = {
     success: '#37e29a',
     warning: '#f4e048',
     error: '#e25837',
+    accent: '#456ead',
   },
   duration: {
     ms300: 0.3,

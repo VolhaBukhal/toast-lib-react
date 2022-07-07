@@ -44,6 +44,8 @@
         "@typescript-eslint/no-var-reqiures": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "spaced-comment": ["error", "always"]
+        "spaced-comment": ["error", "always"],
+         "no-duplicate-imports": ["error", { "includeExports": true }]
     }
 }
+
