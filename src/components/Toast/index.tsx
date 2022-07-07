@@ -5,9 +5,9 @@ import { ToastPortalPosition } from '@/components/ToastPortal/types'
 import { StyledToast, StyledTitle, StyledCloseToast } from './styles'
 
 export const Toast = ({
-  title,
-  mode,
-  message,
+  title = 'Infor',
+  mode = 'info',
+  message = 'Example of info toast',
   backgroundColor,
   animationType = AnimationMode.SCALE,
   position = ToastPortalPosition.TOP_RIGHT,
@@ -15,7 +15,6 @@ export const Toast = ({
   onDragDelete,
 }: ToastProps) => {
   const [reverse, setReverse] = useState(false)
-  console.log(reverse)
 
   useEffect(() => {
     setReverse(false)
