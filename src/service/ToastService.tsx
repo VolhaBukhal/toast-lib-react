@@ -20,11 +20,7 @@ class ToastService {
   }
 
   public addToast = (toast: IToast) => {
-    if (this.toasts.length < 3) {
-      this.toasts.push(toast)
-    } else {
-      return
-    }
+    this.toasts.push(toast)
   }
 
   public removeToast = (toastId: string) => {

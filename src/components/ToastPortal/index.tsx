@@ -70,8 +70,9 @@ export const ToastPortal = forwardRef<RefType, ToastPortalProps>(
             autoCloseTime={autoCloseTime}
             margin={margin}
           >
-            {toasts.map(
-              ({ title, id, mode, message, animationType, backgroundColor, position }) => (
+            {toasts
+              .slice(0, 3)
+              .map(({ title, id, mode, message, animationType, backgroundColor, position }) => (
                 <Toast
                   title={title}
                   key={id}
@@ -83,8 +84,7 @@ export const ToastPortal = forwardRef<RefType, ToastPortalProps>(
                   onDragDelete={handleClose(id)}
                   position={position}
                 ></Toast>
-              )
-            )}
+              ))}
           </ToastContainer>,
           document.getElementById(portalId)!
         )

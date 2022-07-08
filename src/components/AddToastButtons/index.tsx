@@ -54,13 +54,6 @@ export const AddToastButtons = (props: ToastPortalProps) => {
       <Button onClick={addWarning}>Warning Toast</Button>
       <Button onClick={addError}>Error Toast</Button>
       <ToastPortal ref={toastRef} {...props} />
-      {/* <ToastPortal
-        ref={toastRef}
-        autoClose={autoClose}
-        autoCloseTime={autoCloseTime}
-        position={position}
-        margin={margin}
-      /> */}
     </ButtonGroup>
   )
 }

@@ -19,7 +19,7 @@ yarn add toast-lib-react
 ## Example
 
 ```
-import { ToastPortal, useToastREf } from 'toast-lib-react'
+import { ToastPortal, useToastRef } from 'toast-lib-react'
 
 const SuccessSettings = {
   title: 'Success',
